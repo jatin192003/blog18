@@ -1,11 +1,15 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { posts } from '../data/post';
-import React from 'react';
+import React, { useState } from 'react';
+import { usePosts } from '../data/post';
+import PostItem from '../components/PostItem';
+import Loader from '../components/Loader';
 
 export default function AllPosts() {
+  const { posts, loading, error } = usePosts();
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 6;
+  const postsPerPage = 12;
+
+  if (loading) return <Loader />;
+  if (error) return <div>Error: {error}</div>;
 
   const totalPages = Math.ceil(posts.length / postsPerPage);
   const currentPosts = posts.slice(
@@ -16,12 +20,9 @@ export default function AllPosts() {
   return (
     <div className="p-4">
       <h1 className="text-3xl font-bold mb-4">All Posts</h1>
-      <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+      <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {currentPosts.map(post => (
-          <Link to={`/post/${post.slug}`} key={post.id} className="bg-gray-800 rounded shadow p-4 hover:shadow-lg transition text-gray-200">
-            <img src={post.image} alt={post.title} className="w-full h-48 object-cover mb-2 rounded" />
-            <h2 className="text-xl font-semibold">{post.title}</h2>
-          </Link>
+          <PostItem post={post} key={post._id} />
         ))}
       </div>
       <div className="flex justify-center mt-4">

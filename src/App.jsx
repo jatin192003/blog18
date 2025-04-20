@@ -12,10 +12,10 @@ function App() {
   if (!isVerified) return <AgeGate onVerified={() => setIsVerified(true)} />;
 
   return (
-    <div className="bg-gray-900 text-gray-200" >
+    <div className="bg-gray-900 text-gray-200 min-h-screen" >
       <Router>
         <header className="bg-gray-900 text-gray-200 p-4 flex justify-between items-center">
-          <img src="https://res.cloudinary.com/dg0p7iygi/image/upload/v1744206334/hi6dwun45c6bhonjfxfe.svg" alt="" className="h-8" />
+          <Link to="/"><img src="https://res.cloudinary.com/dg0p7iygi/image/upload/v1744206334/hi6dwun45c6bhonjfxfe.svg" alt="" className="h-8" /></Link>
           <nav className="flex space-x-4">
             <Link to="/" className="hover:underline">Home</Link>
             <Link to="/all-posts" className="hover:underline">All Posts</Link>
@@ -23,7 +23,7 @@ function App() {
         </header>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/post/:slug" element={<PostDetail />} />
+          <Route path="/post/:_id" element={<PostDetail />} />
           <Route path="/all-posts" element={<AllPosts />} />
         </Routes>
       </Router>

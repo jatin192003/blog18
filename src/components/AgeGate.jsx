@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import React from 'react';
-import AdsterraBanner from '../ads/AdsterraBanner';
+import AdsteraaBanner2 from '../ads/AdsterraBanner2';
 
 export default function AgeGate({ onVerified }) {
   const [error, setError] = useState('');
@@ -18,7 +18,7 @@ export default function AgeGate({ onVerified }) {
       <button onClick={handleClick} className="bg-red-600 px-6 py-2 rounded text-white hover:bg-red-800">
         I am 18+
       </button>
-      <AdsterraBanner/>
+      <AdsteraaBanner2/>
       {error && <p className="mt-4 text-red-400">{error}</p>}
     </div>
   );

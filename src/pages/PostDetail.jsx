@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { usePosts } from '../data/post';
 import React from 'react';
 import Loader from '../components/Loader';
+import AdsteraaBanner3 from '../ads/AdsterraBanner3';
 
 export default function PostDetail() {
   const { _id } = useParams();
@@ -45,6 +46,7 @@ export default function PostDetail() {
     <div className="p-4 max-w-2xl mx-auto bg-gray-900 text-gray-200">
       <h1 className="text-3xl font-bold mb-2">{post.title}</h1>
       <img src={post.imageUrl} alt={post.title} className="mb-4 rounded" />
+      <AdsteraaBanner3/>
       <div>{renderContent(post.content)}</div>
     </div>
   );
